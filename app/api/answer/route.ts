@@ -1,12 +1,10 @@
-// app/api/answer/route.ts
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*", // 開放所有來源（可改成限定網域）
+  "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Headers": "Content-Type",
 };
 
 export async function OPTIONS() {
-  // 處理 CORS 預檢請求
   return new Response(null, { headers: corsHeaders });
 }
 
@@ -32,4 +30,5 @@ export async function POST(req: Request) {
     { headers: { "content-type": "application/json", ...corsHeaders } }
   );
 }
+
 
