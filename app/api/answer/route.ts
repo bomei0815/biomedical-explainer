@@ -1,7 +1,10 @@
+// app/api/answer/route.ts
+export const dynamic = 'force-dynamic'; // 確保不被靜態化
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
 export async function OPTIONS() {
@@ -9,11 +12,14 @@ export async function OPTIONS() {
 }
 
 export async function GET() {
+  // 回傳 build 資訊，幫你確認部署是否更新
+  const sha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || "local";
   return new Response(
     JSON.stringify({
       ok: true,
       howToUse: "POST { question } 到 /api/answer 取得專業/白話解釋",
       example: { question: "什麼是紅血球？" },
+      build: sha
     }),
     { headers: { "content-type": "application/json", ...corsHeaders } }
   );
