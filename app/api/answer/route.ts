@@ -1,5 +1,5 @@
 
-export const dynamic = 'force-dynamic'; // 確保不被靜態化
+export const dynamic = 'force-dynamic'; // 
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
