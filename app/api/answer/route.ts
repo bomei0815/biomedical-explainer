@@ -1,4 +1,4 @@
-// app/api/answer/route.ts
+
 export const dynamic = 'force-dynamic'; // 確保不被靜態化
 
 const corsHeaders = {
@@ -12,7 +12,7 @@ export async function OPTIONS() {
 }
 
 export async function GET() {
-  // 回傳 build 資訊，幫你確認部署是否更新
+
   const sha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || "local";
   return new Response(
     JSON.stringify({
@@ -36,5 +36,3 @@ export async function POST(req: Request) {
     { headers: { "content-type": "application/json", ...corsHeaders } }
   );
 }
-
-
