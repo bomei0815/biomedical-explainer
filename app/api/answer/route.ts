@@ -36,7 +36,4 @@ export async function POST(req: Request) {
     { headers: { "content-type": "application/json", ...corsHeaders } }
   );
 }
-curl -i -X POST https://biomedical-explainer-sry2.vercel.app/api/answer \
-  -H "Content-Type: application/json" \
-  -d '{"question":"什麼是紅血球？"}'
 
